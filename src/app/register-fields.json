@@ -1,0 +1,26 @@
+[
+    {
+        "field": "Nome",
+        "id": "name",
+        "type": "text",
+        "placeholder": "Digite aqui seu nome"
+    },
+    {
+        "field": "E-mail",
+        "id": "email",
+        "type": "email",
+        "placeholder": "Digite aqui seu e-mail"
+    },
+    { 
+        "field": "Senha",
+        "id": "password",
+        "type": "password",
+        "placeholder": "Digite aqui sua senha"
+    },
+    {
+        "field": "Telefone",
+        "id": "telephone",
+        "type": "text",
+        "placeholder": "Digite seu telefone"
+    }
+]

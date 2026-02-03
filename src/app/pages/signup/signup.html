@@ -1,0 +1,23 @@
+<div class="signup-wrapper">
+  <app-container class="half-width">
+    <img src="assets/signup-front-image.png" alt="signup-front-image">
+  </app-container>
+  <app-container class="half-width">
+    <h1>cadastre-se</h1>
+    <form [formGroup]="registerForm" (ngSubmit)="salvarContato()">
+      @for (field of register_fields; track field.id) {
+        <app-forms
+          [field]="field.field"
+          [type]="field.type"
+          [placeholder]="field.placeholder"
+          [id]="field.id"
+        >
+        </app-forms>
+      }
+      <div class="form-footer">
+            <span>Esqueci minha senha</span>
+          <button type="submit">enviar</button>
+      </div>
+    </form>
+  </app-container>
+</div>

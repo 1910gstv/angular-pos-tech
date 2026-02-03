@@ -1,0 +1,21 @@
+<div class="login-wrapper">
+  <app-container>
+    <h1>entrar</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      @for (field of register_fields; track field.id) {
+        <app-forms
+          [field]="field.field"
+          [type]="field.type"
+          [placeholder]="field.placeholder"
+          [id]="field.id"
+        >
+        </app-forms>
+      }
+      <div class="form-footer">
+            <span>Esqueci minha senha</span>
+          <button type="submit">entrar</button>
+      </div>
+    </form>
+    <span>Ainda não tem uma conta? <a routerLink="/cadastro">Cadastre-se</a></span>
+  </app-container>
+</div>

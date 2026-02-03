@@ -1,0 +1,19 @@
+.wrapper {
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #71717249;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 32px;
+}
+
+.centralize-column {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+}

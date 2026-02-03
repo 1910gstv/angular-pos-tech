@@ -1,0 +1,48 @@
+
+* {
+    font-family: 'Lato', sans-serif;
+}
+
+h1, span {
+    color: #fff
+}
+input, button, textarea, select, label {
+    font-family: inherit;
+}
+.login-wrapper {
+    /* display: flex;
+    flex-direction: row; 
+    justify-content: center;
+    align-items: center;  */
+    margin: 0 auto;
+    max-width: 90%;
+    width: 600px;
+    min-height: 100vh;
+    /* background-color: #005B41; */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    width: 100%;
+}
+
+.form-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+button {
+    border: none;
+    padding: 8px;
+    max-width: 100px;
+    width: 50%;
+    border-radius: 90px;
+    margin: 12px 0;
+    background-color: #005B41;
+    color: #fff;
+    cursor: pointer;
+}

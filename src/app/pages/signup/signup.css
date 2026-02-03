@@ -1,0 +1,51 @@
+
+* {
+    font-family: 'Lato', sans-serif;
+}
+
+h1, span {
+    color: #fff
+}
+input, button, textarea, select, label {
+    font-family: inherit;
+}
+.signup-wrapper {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-around; /* Distribui o espaço entre os itens */
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+app-container.half-width {
+    flex: 1; 
+    display: flex;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    width: 100%;
+    /* background-color: #005B41; */
+}
+
+.form-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+button {
+    border: none;
+    padding: 8px;
+    max-width: 100px;
+    width: 50%;
+    border-radius: 90px;
+    margin: 12px 0;
+    background-color: #005B41;
+    color: #fff;
+    cursor: pointer;
+}

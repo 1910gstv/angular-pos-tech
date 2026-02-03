@@ -1,0 +1,29 @@
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    margin: 14px 0;
+
+    font-size: 16px;
+    text-transform: lowercase;
+
+    color: #f0f0ff;
+
+    width: 100%;
+}
+
+.form-wrapper input {
+    padding: 8px 12px;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 90px;
+
+    background-color: #d9d9d952;
+    color: #fff
+}
+
+label {
+    font-weight: bold;
+}
