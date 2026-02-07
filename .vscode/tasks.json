@@ -27,7 +27,7 @@
       "problemMatcher": {
         "owner": "typescript",
         "pattern": "$tsc",
-        "background": {
+        "round": {
           "activeOnStart": true,
           "beginsPattern": {
             "regexp": "Changes detected"

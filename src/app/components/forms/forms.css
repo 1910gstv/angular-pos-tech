@@ -27,3 +27,7 @@
 label {
     font-weight: bold;
 }
+
+input::placeholder {
+    color: #ffffffb3;
+}
