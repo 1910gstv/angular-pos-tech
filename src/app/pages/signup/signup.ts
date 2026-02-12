@@ -34,7 +34,7 @@ export class Signup implements OnInit {
   }
 
   salvarContato() {
-    console.log('Dados do formulário inteiro:', this.registerForm.value);
+    // console.log('Dados do formulário inteiro:', this.registerForm.value);
     
     if (this.registerForm.invalid) {
       this.registerForm.markAllAsTouched();
@@ -43,6 +43,17 @@ export class Signup implements OnInit {
     if (this.registerForm.valid) {
       this.route.navigate(['/login']);
     }
+
+    const body = {
+      name: this.registerForm.get('name')?.value,
+      email: this.registerForm.get('email')?.value,
+      password: this.registerForm.get('password')?.value,
+      sendEmailOnSuccess: this.registerForm.get('sendEmailOnSuccess')?.value === true ? 'Y' : 'N',
+      sendEmailOnFailure: this.registerForm.get('sendEmailOnFailure')?.value === true ? 'Y' : 'N',
+    }
+
+    console.log('body: ',body)
+
     this.registerForm.reset({
       name: '',
       email: '',
@@ -51,4 +62,5 @@ export class Signup implements OnInit {
       sendEmailOnFailure: false,
     });
   }
+
 }
