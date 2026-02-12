@@ -10,7 +10,7 @@ import { Forms } from '../../components/forms/forms';
 
 @Component({
   selector: 'app-signup',
-  imports: [Container, RouterLink, Forms, ReactiveFormsModule],
+  imports: [Container, Forms, ReactiveFormsModule],
   templateUrl: './signup.html',
   styleUrl: './signup.css',
 })
@@ -19,18 +19,27 @@ export class Signup implements OnInit {
   register_fields: IForms[] = register_fields_json;
   registerForm!: FormGroup;
 
-    ngOnInit() {
-      this.registerForm = new FormGroup({
-        name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(150)]),
-        email: new FormControl('', [Validators.required, Validators.email]),
-        password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-        sendEmailOnSuccess: new FormControl(false),
-        sendEmailOnFailure: new FormControl(false),
-      });
-    }
+  ngOnInit() {
+    this.registerForm = new FormGroup({
+      name: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(150),
+      ]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      sendEmailOnSuccess: new FormControl(false),
+      sendEmailOnFailure: new FormControl(false),
+    });
+  }
 
   salvarContato() {
     console.log('Dados do formulário inteiro:', this.registerForm.value);
+    
+    if (this.registerForm.invalid) {
+      this.registerForm.markAllAsTouched();
+      return;
+    }
     if (this.registerForm.valid) {
       this.route.navigate(['/login']);
     }

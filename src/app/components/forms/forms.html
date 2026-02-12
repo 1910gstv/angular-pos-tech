@@ -7,6 +7,23 @@
   } @else {
     <label [for]="id">{{ field }}</label>
     <input [type]="type" [id]="id" [placeholder]="placeholder" [formControlName]="id" />
+    @if (control?.invalid && (control?.dirty || control?.touched)) {
+    <div class="error-container">
+      @if (control?.hasError('required')) {
+        <div class="error-text">{{ field }} é obrigatório.</div>
+      }
+      
+      @if (control?.hasError('minlength')) {
+        <div class="error-text">
+          mínimo de {{ control?.errors?.['minlength'].requiredLength }} caracteres.
+        </div>
+      }
+
+      @if (control?.hasError('email')) {
+        <div class="error-text">digite um e-mail válido.</div>
+      }
+    </div>
+  }
   }
 
 </div>

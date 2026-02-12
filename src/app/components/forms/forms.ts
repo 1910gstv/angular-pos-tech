@@ -1,5 +1,5 @@
 import { Component, inject, Input, SkipSelf } from '@angular/core';
-import { ControlContainer, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ControlContainer, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-forms',
@@ -19,4 +19,10 @@ export class Forms {
   @Input() id: string = '';
   @Input() type: string = '';
   @Input() placeholder: string = '';
+
+  private container = inject(ControlContainer);
+  
+  get control() {
+    return this.container.control?.get(this.id);
+  }
 }
