@@ -1,13 +1,22 @@
 /* Container que centraliza tudo na tela */
+* {
+    font-family: 'Lato', sans-serif;
+}
+
+h2 {
+    color: #fff;
+}
+
 .upload-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
 }
 
-/* A área de Drop (o card principal) */
 .drop-zone {
+    margin-top: 30px;
     width: 100%;
     max-width: 600px;
     min-height: 300px;

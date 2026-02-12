@@ -1,4 +1,4 @@
-import { Component, Input, SkipSelf } from '@angular/core';
+import { Component, inject, Input, SkipSelf } from '@angular/core';
 import { ControlContainer, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -15,8 +15,8 @@ import { ControlContainer, FormControl, FormGroup, ReactiveFormsModule } from '@
   ],
 })
 export class Forms {
-  @Input() field: string = ''
-  @Input() id: string = ''
-  @Input() type: string = ''
-  @Input() placeholder: string = ''
+  @Input() field: string = '';
+  @Input() id: string = '';
+  @Input() type: string = '';
+  @Input() placeholder: string = '';
 }

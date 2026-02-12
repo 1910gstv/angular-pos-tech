@@ -1,5 +1,12 @@
-<div class="form-wrapper" >
+<div class="form-wrapper">
+  @if (type === 'checkbox') {
+    <div class="checkbox-group">
+      <input type="checkbox" [id]="id" [formControlName]="id" />
+      <label [for]="id">{{ field }}</label>
+    </div>
+  } @else {
     <label [for]="id">{{ field }}</label>
-    <input [type]="type" [id]="id" [placeholder]="placeholder" [formControlName]="id">
+    <input [type]="type" [id]="id" [placeholder]="placeholder" [formControlName]="id" />
+  }
 
 </div>

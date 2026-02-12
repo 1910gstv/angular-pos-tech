@@ -31,3 +31,40 @@ label {
 input::placeholder {
     color: #ffffffb3;
 }
+
+.checkbox-group {
+    display: flex;
+    flex-direction: row; 
+    align-items: center; 
+    gap: 10px;           
+    cursor: pointer;
+}
+
+.checkbox-group input {
+    width: 20px;         
+    height: 20px;
+    margin: 0;
+    cursor: pointer;
+    accent-color: #005B41; 
+}
+
+.checkbox-group label {
+    margin: 0;
+    cursor: pointer;
+    font-weight: normal; 
+}
+
+.error-message {
+    color: #ff4d4d; /* Um vermelho suave para o modo escuro */
+    font-size: 12px;
+    margin-top: -10px; /* Ajuste dependendo do seu gap */
+    margin-bottom: 10px;
+    font-weight: normal;
+    text-transform: lowercase;
+}
+
+/* Opcional: Borda vermelha no input inválido */
+input.ng-invalid.ng-touched {
+    border: 1px solid #ff4d4d55;
+    background-color: #ff4d4d11;
+}

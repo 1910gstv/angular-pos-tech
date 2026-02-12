@@ -18,9 +18,15 @@
         "placeholder": "Digite aqui sua senha"
     },
     {
-        "field": "Telefone",
-        "id": "telephone",
-        "type": "text",
-        "placeholder": "Digite seu telefone"
+        "field": "Deseja receber e-mail no caso de sucesso no envio?",
+        "id": "sendEmailOnSuccess",
+        "type": "checkbox",
+        "placeholder": "Deseja receber e-mail no caso de sucesso no envio?"
+    },
+    {
+        "field": "Deseja receber e-mail no caso de falha no envio?",
+        "id": "sendEmailOnFailure",
+        "type": "checkbox",
+        "placeholder": "Deseja receber e-mail no caso de falha no envio?"
     }
 ]

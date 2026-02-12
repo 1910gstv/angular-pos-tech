@@ -19,20 +19,27 @@ export class Signup implements OnInit {
   register_fields: IForms[] = register_fields_json;
   registerForm!: FormGroup;
 
-  ngOnInit() {
-    this.registerForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-      telephone: new FormControl('', [Validators.required, Validators.minLength(10)]),
-    });
-  }
+    ngOnInit() {
+      this.registerForm = new FormGroup({
+        name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(150)]),
+        email: new FormControl('', [Validators.required, Validators.email]),
+        password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+        sendEmailOnSuccess: new FormControl(false),
+        sendEmailOnFailure: new FormControl(false),
+      });
+    }
 
   salvarContato() {
     console.log('Dados do formulário inteiro:', this.registerForm.value);
     if (this.registerForm.valid) {
       this.route.navigate(['/login']);
     }
-    this.registerForm.reset();
+    this.registerForm.reset({
+      name: '',
+      email: '',
+      password: '',
+      sendEmailOnSuccess: false,
+      sendEmailOnFailure: false,
+    });
   }
 }

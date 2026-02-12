@@ -17,7 +17,7 @@ export class Home {
   // Estados da Interface
   isUploading = false;
   progress = 0;
-  isDragOver = false;
+  isDragOver = false; 
   selectedFile: File | null = null;
 
   // 1. Quando o arquivo é arrastado sobre a zona

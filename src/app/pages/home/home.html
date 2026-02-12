@@ -1,38 +1,33 @@
 <div>
   <app-menu></app-menu>
-  <div class="upload-section">
-    <h2>fazer upload</h2>
+  <div class="upload-container">
+    <h2>envie seu vídeo</h2>
+    <div
+      class="drop-zone"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)"
+      (drop)="onDrop($event)"
+      (click)="fileInput.click()"
+    >
+      <div class="upload-content">
+        <span class="upload-icon">☁️</span>
 
-    <div class="upload-container">
-      <div
-        class="drop-zone"
-        (dragover)="onDragOver($event)"
-        (dragleave)="onDragLeave($event)"
-        (drop)="onDrop($event)"
-        (click)="fileInput.click()"
-      >
-        <div class="upload-content">
-          <span class="upload-icon">☁️</span>
+        <h3>fazer upload</h3>
+        <p>clique ou arraste o arquivo aqui</p>
 
-          <h3>fazer upload</h3>
-          <p>clique ou arraste o arquivo aqui</p>
-
-          @if (selectedFile) {
-            <div class="file-info">
-              <strong>Arquivo selecionado:</strong> {{ selectedFile.name }}
-            </div>
-          }
-        </div>
-
-        <input type="file" #fileInput (change)="onFileSelected($event)" accept="video/*" hidden />
-
-        @if (isUploading) {
-          <div class="progress-wrapper" (click)="$event.stopPropagation()">
-            <div class="progress-bar" [style.width]="progress + '%'"></div>
-            <span class="progress-text">{{ progress }}% enviado</span>
-          </div>
+        @if (selectedFile) {
+          <div class="file-info"><strong>Arquivo selecionado:</strong> {{ selectedFile.name }}</div>
         }
       </div>
+
+      <input type="file" #fileInput (change)="onFileSelected($event)" accept="video/*" hidden />
+
+      @if (isUploading) {
+        <div class="progress-wrapper" (click)="$event.stopPropagation()">
+          <div class="progress-bar" [style.width]="progress + '%'"></div>
+          <span class="progress-text">{{ progress }}% enviado</span>
+        </div>
+      }
     </div>
   </div>
 </div>
