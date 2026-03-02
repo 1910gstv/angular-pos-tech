@@ -7,6 +7,7 @@ import register_fields_json from '../../register-fields.json';
 import { IForms } from '../../../interfaces/IForms';
 import { Container } from '../../components/container/container';
 import { Forms } from '../../components/forms/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
@@ -16,6 +17,8 @@ import { Forms } from '../../components/forms/forms';
 })
 export class Signup implements OnInit {
   private route = inject(Router);
+  private http = inject(HttpClient);
+
   register_fields: IForms[] = register_fields_json;
   registerForm!: FormGroup;
 
@@ -34,15 +37,13 @@ export class Signup implements OnInit {
   }
 
   salvarContato() {
-    // console.log('Dados do formulário inteiro:', this.registerForm.value);
-    
     if (this.registerForm.invalid) {
       this.registerForm.markAllAsTouched();
       return;
     }
-    if (this.registerForm.valid) {
-      this.route.navigate(['/login']);
-    }
+    // if (this.registerForm.valid) {
+    //   this.route.navigate(['/login']);
+    // }
 
     const body = {
       name: this.registerForm.get('name')?.value,
@@ -50,17 +51,21 @@ export class Signup implements OnInit {
       password: this.registerForm.get('password')?.value,
       sendEmailOnSuccess: this.registerForm.get('sendEmailOnSuccess')?.value === true ? 'Y' : 'N',
       sendEmailOnFailure: this.registerForm.get('sendEmailOnFailure')?.value === true ? 'Y' : 'N',
-    }
-
-    console.log('body: ',body)
-
-    this.registerForm.reset({
-      name: '',
-      email: '',
-      password: '',
-      sendEmailOnSuccess: false,
-      sendEmailOnFailure: false,
+    };
+    const headers = new HttpHeaders({
+      'Ocp-Apim-Subscription-Key': '94c8c9593701408fa7b18106dda8a3f5',
     });
+    this.http
+      .post('https://video-hackathon-fiap.azure-api.net/auth/api/Auth/register', body, { headers })
+      .subscribe({
+        next: (response) => {
+          console.log(response)
+          this.route.navigate(['/login']);
+        },
+        error: (err) => {
+          console.log(err);
+          return err;
+        },
+      });
   }
-
 }
