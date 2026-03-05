@@ -32,6 +32,8 @@
     "@fortawesome/angular-fontawesome": "^4.0.0",
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "@types/node": "^25.2.3",
+    "ng-angular-popup": "^2.1.0",
+    "ngx-toastr": "^20.0.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
