@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, ɵɵtrustConstantResourceUrl } from '@angular/core';
 import { Menu } from '../../components/menu/menu';
 import { UploadService } from '../../services/upload';
 import { CommonModule } from '@angular/common';
@@ -19,6 +19,8 @@ export class Home {
   progress = 0;
   isDragOver = false; 
   selectedFile: File | null = null;
+  hasError = false
+  returnedError = ''
 
   // 1. Quando o arquivo é arrastado sobre a zona
   onDragOver(event: DragEvent) {
@@ -69,19 +71,26 @@ export class Home {
   private startUpload(file: File) {
     this.isUploading = true;
     this.progress = 0;
-
-    this.uploadService.uploadVideo(file).subscribe({
-      next: (event: any) => {
-        console.log('Evento recebido:', event); // Verifique isso no console (F12)
-
-        if (event.type === HttpEventType.UploadProgress) {
-          this.progress = Math.round((100 * event.loaded) / (event.total || 100));
-          this.cdr.detectChanges();
-          console.log('Progresso atual:', this.progress);
-        } else if (event.type === HttpEventType.Response) {
+    this.hasError = false;
+      
+      this.uploadService.uploadVideo(file).subscribe({
+        next: (event: any) => {
+          console.log('Evento recebido:', event); // Verifique isso no console (F12)
+          
+          if (event.type === HttpEventType.UploadProgress) {
+            this.progress = Math.round((100 * event.loaded) / (event.total || 100));
+            console.log('Progresso atual:', this.progress);
+          } else if (event.type === HttpEventType.Response) {
+            this.isUploading = false;
+          }
+        },
+        error: (err) => {
+          this.hasError = true;
           this.isUploading = false;
+          this.returnedError = err.statusText;
+
+          this.cdr.detectChanges();
         }
-      },
-    });
+      });
   }
 }

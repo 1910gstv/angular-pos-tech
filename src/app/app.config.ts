@@ -7,11 +7,13 @@ import { provideRouter, withViewTransitions } from '@angular/router';
 import { provideNgToast } from 'ng-angular-popup';
 
 import { routes } from './app.routes';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes, withViewTransitions()),
+    provideHttpClient(),
     provideZonelessChangeDetection(),
     provideNgToast({
       duration: 5000,
