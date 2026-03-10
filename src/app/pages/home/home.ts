@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, inject, ɵɵtrustConstantResourceUrl } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { Menu } from '../../components/menu/menu';
 import { UploadService } from '../../services/upload';
 import { CommonModule } from '@angular/common';
