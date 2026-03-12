@@ -1,13 +1,32 @@
 <div>
-    <nav class="menu">
-        <div class="left">
-            <a routerLink="/home">home</a>
-            <a routerLink="/my-videos">meus vídeos</a>
+  <nav class="menu">
+    <div class="left">
+      <a routerLink="/home">home</a>
+      <a routerLink="/my-videos">meus vídeos</a>
+    </div>
+
+    <div class="right">
+      <span>{{ username }}</span>
+
+      <div class="user-menu">
+        <fa-icon
+          [icon]="faUser"
+          (click)="toggleDropdown()"
+          id="faUser"
+        ></fa-icon>
+
+        @if (isDropdownOpen) {
+        <div
+          class="dropdown"
+          (mouseleave)="closeDropdown()"
+        >
+          <button (click)="logout()">Logout</button>
         </div>
-        <div class="right">
-            <span>Username</span>
-            <fa-icon [icon] ="faUser" (click)="logout()" />
-            <fa-icon [icon] ="faBell" />
-        </div>
-    </nav>
+        }
+
+      </div>
+
+      <fa-icon [icon]="faBell"></fa-icon>
+    </div>
+  </nav>
 </div>

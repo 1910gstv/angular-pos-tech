@@ -5,21 +5,24 @@ import {
   HttpHeaders
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth-service';
 
 @Injectable({ providedIn: 'root' })
 export class UploadService {
 
   private http = inject(HttpClient);
+  private authService = inject(AuthService)
 
   uploadVideo(file: File): Observable<HttpEvent<any>> {
 
+    const userData = this.authService.getUserInfo()
+
     const formData = new FormData();
-    formData.append('userId', '6eab67bc-24ca-4d33-804e-22a3def9875f');
     formData.append('file', file);
 
     const headers = new HttpHeaders({
       'Ocp-Apim-Subscription-Key': '94c8c9593701408fa7b18106dda8a3f5',
-      'userId': '6eab67bc-24ca-4d33-804e-22a3def9875f'
+      'userId': userData['userId']
     });
 
     return this.http.post(
@@ -28,7 +31,7 @@ export class UploadService {
       {
         headers,
         reportProgress: true,
-        observe: 'events' // necessário para receber progresso
+        observe: 'events'
       }
     );
 

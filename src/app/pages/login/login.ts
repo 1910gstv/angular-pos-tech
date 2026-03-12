@@ -69,6 +69,7 @@ export class Login implements OnInit {
           console.log(response);
           this.toast.success('Login realizado com sucesso!', 'Success');
           this.authService.setToken(response.token);
+          this.authService.setUserInfo(response)
           this.route.navigate(['/home']);
         },
         error: (err) => {
