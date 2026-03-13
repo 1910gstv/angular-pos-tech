@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "https://video-hackathon-fiap.azure-api.net",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}
