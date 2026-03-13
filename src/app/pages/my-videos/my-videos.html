@@ -1,3 +1,50 @@
-<div>
-    <app-menu></app-menu>
+<app-menu></app-menu>
+
+<div class="container">
+  <h2>meus vídeos processados</h2>
+
+  @if (hasError) {
+    <div class="error-card">
+      <div class="error-content">
+        <span class="error-icon">⚠️</span>
+        <div class="error-text">
+          <strong>Não foi possível carregar os vídeos</strong>
+          <p>{{ returnedError }}</p>
+        </div>
+      </div>
+      <button (click)="loadVideos()" class="btn-retry">Tentar novamente</button>
+    </div>
+  }
+
+  @if (isLoading) {
+    <div class="loader-container">
+      <div class="spinner"></div>
+      <p>Buscando seus vídeos na nuvem...</p>
+    </div>
+  } @else if (!hasError) {
+    
+    <div class="video-grid">
+      @for (video of videos; track video.id) {
+        <div class="video-card">
+          <div class="video-info">
+            <div class="status-indicator" [class.completed]="video.status === 'COMPLETED'"></div>
+            <div class="details">
+              <strong>{{ video.fileName }}</strong>
+              <p>{{ formatSize(video.size) }} • {{ video.extension.toUpperCase() }}</p>
+              <span class="status-text">{{ video.status }}</span>
+            </div>
+          </div>
+          
+          <button (click)="download(video)" class="btn-download" [disabled]="video.status !== 'COMPLETED'">
+            📥 Baixar ZIP
+          </button>
+        </div>
+      } @empty {
+        <div class="empty-state">
+          <span class="empty-icon">📂</span>
+          <p>Você ainda não enviou nenhum vídeo para processamento.</p>
+        </div>
+      }
+    </div>
+  }
 </div>

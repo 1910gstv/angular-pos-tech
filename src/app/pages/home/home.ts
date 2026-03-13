@@ -75,7 +75,7 @@ export class Home {
       
       this.uploadService.uploadVideo(file).subscribe({
         next: (event: any) => {
-          console.log('Evento recebido:', event); // Verifique isso no console (F12)
+          console.log('Evento recebido:', event);
           
           if (event.type === HttpEventType.UploadProgress) {
             this.progress = Math.round((100 * event.loaded) / (event.total || 100));
@@ -83,6 +83,7 @@ export class Home {
           } else if (event.type === HttpEventType.Response) {
             this.isUploading = false;
           }
+          this.cdr.detectChanges()
         },
         error: (err) => {
           this.hasError = true;
