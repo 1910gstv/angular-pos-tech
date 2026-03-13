@@ -77,10 +77,5 @@ export class Login implements OnInit {
           return err;
         },
       });
-      
-    // this.loginForm.reset({
-    //   email: '',
-    //   password: '',
-    // });
   }
 }
